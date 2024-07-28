@@ -22,7 +22,7 @@ export default function NotMobile() {
 
       <div className="border-8 border-black rounded-md p-1">
         <QRCodeCanvas
-          value={`http://192.168.1.100:3000`}
+          value={`https://my-topia-web.vercel.app/`}
           size={256}
           bgColor="#ffffff"
           fgColor="#000000"
