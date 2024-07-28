@@ -28,6 +28,8 @@ export default function useCheckConnection() {
 
             if (myIP) {
               return resolve(ice.candidate.address);
+            } else {
+              resolve(ice.candidate.address);
             }
           }
 
