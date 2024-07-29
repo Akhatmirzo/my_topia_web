@@ -1,16 +1,12 @@
-import React, { useEffect } from "react";
+import React from "react";
 import useGetNetwork from "../../hook/useGetNetwork";
 import { QRCodeCanvas } from "qrcode.react";
 import useCheckConnection from "../../hook/useCheckConnection";
 
 export default function NotMobile() {
+  // eslint-disable-next-line no-unused-vars
   const YouNetwork = useGetNetwork();
   const localIp = useCheckConnection();
-
-  useEffect(() => {
-    console.log(YouNetwork);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [YouNetwork]);
 
   return (
     <div className="flex h-screen flex-col items-center gap-5 justify-center">

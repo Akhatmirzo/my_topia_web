@@ -7,7 +7,7 @@ export default function useGetNetwork() {
   useEffect(() => {
     // Local URLni olish
     const local = window.location.origin;
-    console.log(window.location);
+    // console.log(window.location);
     setLocalUrl(local);
 
     // Network URLni olish uchun external API
@@ -15,7 +15,7 @@ export default function useGetNetwork() {
       .then((response) => response.json())
       .then((data) => {
         const network = `http://${data.ip}:${window.location.port}`;
-        console.log(data);
+        // console.log(data);
         setNetworkUrl(network);
       })
       .catch((error) => console.error("Error fetching IP:", error));

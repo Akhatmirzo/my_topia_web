@@ -1,34 +1,61 @@
-import React, { useState, useEffect } from "react";
-import { Route, Routes, useLocation } from "react-router-dom";
+import React from "react";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Hero from "./components/Hero";
-import Burger from "./container/Burger";
-import Cart from "./components/Cart";
-import FoodDetails from "./container/FoodDetails";
+import Hero from "./pages/client/Hero";
+import Cart from "./pages/client/Cart";
+import FoodDetails from "./pages/client/FoodDetails";
 import MainLayout from "./layouts/MainLayout";
-import CheckConnection from "./components/NotPage/CheckConnection";
+import CheckConnection from "./pages/NotPage/CheckConnection";
+import Foods from "./pages/client/Foods";
+import AdminDashboard from "./pages/admin/Dashboard";
+import EmployerDashboard from "./pages/employer/Dashboard";
+import RequireAuth from "./components/RequireAuth";
+import Home from "./pages/client/Home/Home";
+import TableLayouts from "./layouts/TableLayouts";
+import FoodsLayout from "./layouts/FoodsLayout";
 
 const App = () => {
-  const [previousLocation, setPreviousLocation] = useState(null);
-  const location = useLocation();
-
-  useEffect(() => {
-    if (location.pathname !== "/cart") {
-      setPreviousLocation(location.pathname);
-    }
-  }, [location]);
 
   return (
     <>
       <Routes>
-        <Route path="/" element={<MainLayout />}>
-          <Route index element={<Hero />} />
+        <Route path="/" element={<Home />} />
+
+        <Route path="/menu" element={<MainLayout />}>
           <Route
-            path="/cart"
-            element={<Cart previousLocation={previousLocation} />}
+            index
+            element={
+              <h1 className="w-full h-[calc(100vh-100px)] flex items-center justify-center text-5xl text-center px-1">
+                Please scan the QR code available on the Table
+              </h1>
+            }
           />
-          <Route path="/burger" element={<Burger />} />
-          <Route path="/foodetails" element={<FoodDetails />} />
+
+          {/* Table Routes */}
+          <Route path="table/:table" element={<TableLayouts />}>
+            <Route index element={<Hero />} />
+
+            <Route path="foods/:category_id" element={<FoodsLayout />}>
+              <Route index element={<Foods />} />
+              <Route path=":food_id" element={<FoodDetails />} />
+            </Route>
+          </Route>
+
+          {/* Cart Routes */}
+          <Route path="cart" element={<Cart />} />
+        </Route>
+
+        {/* Admin Routes */}
+        <Route path="/admin" element={<RequireAuth AllowedRole={"admin"} />}>
+          <Route index element={<AdminDashboard />} />
+        </Route>
+
+        {/* Employer Routes */}
+        <Route
+          path="/employer"
+          element={<RequireAuth AllowedRole={"employer"} />}
+        >
+          <Route index element={<EmployerDashboard />} />
         </Route>
 
         {/* Not Page */}

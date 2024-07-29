@@ -21,7 +21,7 @@ export default function useCheckConnection() {
         pc.createOffer(pc.setLocalDescription.bind(pc), noop);
         pc.onicecandidate = (ice) => {
           if (ice.candidate) {
-            console.log(ice.candidate);
+            // console.log(ice.candidate);
             let myIP = /^192\.168\.1\.\d{1,3}$/.test(ice.candidate.address);
             // let myIP = /^10\.10\.2\.\d{1,3}$/.test(ice.candidate.address);
             pc.onicecandidate = noop;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MdChevronLeft } from "react-icons/md";
-import images from '../assets/images';
+import images from '../../assets/images';
 
 const Cart = ({ previousLocation }) => {
     const [cartItems, setCartItems] = useState([
