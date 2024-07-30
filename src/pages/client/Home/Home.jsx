@@ -137,7 +137,7 @@ export default function Home() {
 
             <div>
               <h2>For MayTopia Employers</h2>
-              <button className="btn">Login</button>
+              <button className="btn" onClick={() => navigate('/login')}>Login</button>
             </div>
           </div>
         </div>

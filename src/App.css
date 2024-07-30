@@ -36,3 +36,8 @@
     z-index: 9;
 }
 
+
+/* Sidebar */
+.sidebar > div {
+    border-radius: 0 !important;
+}

@@ -13,9 +13,13 @@ import RequireAuth from "./components/RequireAuth";
 import Home from "./pages/client/Home/Home";
 import TableLayouts from "./layouts/TableLayouts";
 import FoodsLayout from "./layouts/FoodsLayout";
+import Login from "./pages/auth/Login";
+import Employers from "./pages/admin/Employers";
+import Categories from "./pages/admin/Categories";
+import Orders from "./pages/admin/Orders";
+import Products from "./pages/admin/Products";
 
 const App = () => {
-
   return (
     <>
       <Routes>
@@ -48,6 +52,10 @@ const App = () => {
         {/* Admin Routes */}
         <Route path="/admin" element={<RequireAuth AllowedRole={"admin"} />}>
           <Route index element={<AdminDashboard />} />
+          <Route path="employers" element={<Employers />} />
+          <Route path="categories" element={<Categories />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="products" element={<Products />} />
         </Route>
 
         {/* Employer Routes */}
@@ -60,6 +68,7 @@ const App = () => {
 
         {/* Not Page */}
         <Route path="/connection" element={<CheckConnection />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </>
   );
