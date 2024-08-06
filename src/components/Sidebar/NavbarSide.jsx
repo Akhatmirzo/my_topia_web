@@ -6,9 +6,9 @@ import images from "../../assets/images";
 export default function NavbarSide() {
   return (
     <Navbar fluid>
-      <Navbar className="p-0 m-0 sm:p-0">
+      <Navbar title={"navbar_side"} className="p-0 m-0 sm:p-0">
         <Link to="/">
-          <img src={images.Logo} alt="logo" />
+          <img src={images.Maytopia_control} alt="logo" />
         </Link>
       </Navbar>
       <div className="flex gap-5 md:order-2">
@@ -20,20 +20,21 @@ export default function NavbarSide() {
               alt="User settings"
               img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
               rounded
+              size="lg"
             />
           }
         >
           <Dropdown.Header>
-            <span className="block text-sm">Bonnie Green</span>
-            <span className="block truncate text-sm font-medium">
+            <span className="block text-3xl">Bonnie Green</span>
+            <span className="block truncate text-xl font-medium">
               name@flowbite.com
             </span>
           </Dropdown.Header>
-          <Dropdown.Item>Dashboard</Dropdown.Item>
-          <Dropdown.Item>Settings</Dropdown.Item>
-          <Dropdown.Item>Earnings</Dropdown.Item>
+          <Dropdown.Item className="text-xl">Dashboard</Dropdown.Item>
+          <Dropdown.Item className="text-xl">Settings</Dropdown.Item>
+          <Dropdown.Item className="text-xl">Earnings</Dropdown.Item>
           <Dropdown.Divider />
-          <Dropdown.Item>Sign out</Dropdown.Item>
+          <Dropdown.Item className="text-xl">Sign out</Dropdown.Item>
         </Dropdown>
 
         <DarkThemeToggle />

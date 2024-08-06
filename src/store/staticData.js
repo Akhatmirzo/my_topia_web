@@ -1,4 +1,4 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default {
-    SERVER_URL: "https://my-topia.onrender.com"
+    SERVER_URL: "http://13.51.198.30:8080"
 }

@@ -18,6 +18,7 @@ import Employers from "./pages/admin/Employers";
 import Categories from "./pages/admin/Categories";
 import Orders from "./pages/admin/Orders";
 import Products from "./pages/admin/Products";
+import Tables from "./pages/admin/Tables";
 
 const App = () => {
   return (
@@ -54,6 +55,7 @@ const App = () => {
           <Route index element={<AdminDashboard />} />
           <Route path="employers" element={<Employers />} />
           <Route path="categories" element={<Categories />} />
+          <Route path="tables" element={<Tables />} />
           <Route path="orders" element={<Orders />} />
           <Route path="products" element={<Products />} />
         </Route>

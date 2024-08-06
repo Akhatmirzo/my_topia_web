@@ -41,3 +41,9 @@
 .sidebar > div {
     border-radius: 0 !important;
 }
+
+/* navbar_side */
+
+nav[title="navbar_side"] > div {
+    padding: 0 !important;
+}

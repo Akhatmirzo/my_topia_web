@@ -9,6 +9,7 @@ import {
   HiUser,
   HiViewBoards,
 } from "react-icons/hi";
+import { PiPicnicTableBold } from "react-icons/pi";
 
 export default function AdminLayout() {
   const location = useLocation()
@@ -29,6 +30,12 @@ export default function AdminLayout() {
       title: "Categories",
       to: "/admin/categories",
       icon: HiViewBoards,
+      active: false,
+    },
+    {
+      title: "Tables",
+      to: "/admin/tables",
+      icon: PiPicnicTableBold,
       active: false,
     },
     {
@@ -61,7 +68,7 @@ export default function AdminLayout() {
       <SidebarBasic LinkItems={newLinks} />
       <div className="flex-grow">
         <NavbarSide />
-        <div className="dark:bg-[#374151] h-[calc(100vh-58.5px)] overflow-x-hidden overflow-y-auto p-3 border-t dark:border-l">
+        <div className="dark:bg-[#374151] h-[calc(100vh-62.5px)] overflow-x-hidden overflow-y-auto p-3 border-t dark:border-l">
           <Outlet />
         </div>
       </div>

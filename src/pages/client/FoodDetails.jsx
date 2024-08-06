@@ -2,11 +2,12 @@ import React, { useMemo, useState } from "react";
 import { Link, useLocation, useParams } from "react-router-dom";
 
 import { MdChevronLeft } from "react-icons/md";
-// import { HiOutlineStar } from "react-icons/hi";
+import { HiOutlineStar } from "react-icons/hi";
 import { FaMinus, FaPlus } from "react-icons/fa";
 import { useGetProductQuery } from "../../store/api/productsApi";
 import staticData from "../../store/staticData";
 import { backNav } from "../../utils/helpers";
+import imagesAssets from "../../assets/images";
 
 const FoodDetails = () => {
   const location = useLocation();
@@ -56,10 +57,10 @@ const FoodDetails = () => {
           <div className="text-[22px] text-[#000] font-[500] leading-[normal]">
             {name}
           </div>
-          {/* <div className="flex items-center gap-[10px]">
+          <div className="flex items-center gap-[10px]">
             <HiOutlineStar color="#FDBF48" fontSize={22} />
             <div>4.7</div>
-          </div> */}
+          </div>
         </div>
         <div className="w-full">
           <div className="text-[18px] text-[#000] font-[500] leading-[normal]">
@@ -99,7 +100,7 @@ const FoodDetails = () => {
                 type="submit"
                 className="p-[3px_8px] bg-[#fff] rounded-[10px] box-shadow flex items-center gap-[5px]"
               >
-                <img src={images.CheeseWedge} alt="" width={30} />
+                <img src={imagesAssets.CheeseWedge} alt="" width={30} />
                 <span className="">3.000</span>
               </button>
             </div>

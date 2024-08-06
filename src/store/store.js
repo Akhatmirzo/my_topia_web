@@ -4,6 +4,8 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 import TableSlice from "./slices/TableSlice";
 import { productsApi } from "./api/productsApi";
 import { authApi } from "./api/authApi";
+import { employersApi } from "./api/employersApi";
+import { tablesApi } from "./api/tablesApi";
 
 const store = configureStore({
   reducer: {
@@ -11,15 +13,20 @@ const store = configureStore({
 
     table: TableSlice,
     [categoriesApi.reducerPath]: categoriesApi.reducer,
+    [employersApi.reducerPath]: employersApi.reducer,
     [productsApi.reducerPath]: productsApi.reducer,
+    [tablesApi.reducerPath]: tablesApi.reducer,
     [authApi.reducerPath]: authApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       categoriesApi.middleware,
+      employersApi.middleware,
       productsApi.middleware,
-      authApi.middleware
+      tablesApi.middleware,
+      authApi.middleware,
+      // Other middleware you want to use can go here.
     ),
 });
 
