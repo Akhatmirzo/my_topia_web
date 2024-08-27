@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useEffect } from "react";
 import CategoryCard from "../../components/CategoryCard";
 import { useGetAllCategoriesQuery } from "../../store/api/categoriesApi";
 import { useParams } from "react-router-dom";
@@ -11,7 +11,7 @@ export default function Hero() {
   const { data, error, isLoading } = useGetAllCategoriesQuery();
   const tableSL = useSelector(state => state.table)
 
-  useMemo(() => {
+  useEffect(() => {
     if (table) {
       dispatch(setTable(table));
     }

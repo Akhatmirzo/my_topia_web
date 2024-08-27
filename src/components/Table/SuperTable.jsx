@@ -20,11 +20,11 @@ export default function SuperTable({ table, hiddenKeys, update, deleteData }) {
     <div className="overflow-x-auto">
       <Table hoverable>
         <Table.Head>
-          <Table.HeadCell key={uid()} className="w-[30px] text-center text-3xl">
+          <Table.HeadCell key={uid()} className="w-[30px] text-center text-xl">
             id
           </Table.HeadCell>
           {newKeys?.map((key) => (
-            <Table.HeadCell key={uid()} className="text-3xl">
+            <Table.HeadCell key={uid()} className="text-xl">
               {key}
             </Table.HeadCell>
           ))}
@@ -32,7 +32,7 @@ export default function SuperTable({ table, hiddenKeys, update, deleteData }) {
             <span className="sr-only">Options</span>
           </Table.HeadCell>
         </Table.Head>
-        <Table.Body className="divide-y text-2xl">
+        <Table.Body className="divide-y text-xl">
           {data.map((item, index) => (
             <SuperTableItem
               key={uid()}

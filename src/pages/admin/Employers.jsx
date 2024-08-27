@@ -61,10 +61,10 @@ export default function Employers() {
   return (
     <div className="relative">
       <div className="flex items-center justify-between py-3">
-        <h1 className="dark:text-white text-5xl">Employers</h1>
+        <h1 className="dark:text-white text-3xl">Employers</h1>
 
         <Button onClick={() => setOpenModal(true)}>
-          <span className="text-2xl">Add Employer</span>
+          <span className="text-lg">Add Employer</span>
         </Button>
       </div>
 

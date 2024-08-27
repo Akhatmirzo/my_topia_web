@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import FoodCard from "../../components/FoodCard";
 import { Link, useLocation, useParams } from "react-router-dom";
-import { useGetProductsQuery } from "../../store/api/productsApi";
+import { useGetWebPageFoodsQuery } from "../../store/api/webPageFoodsApi";
 import { useGetCategoryByIdQuery } from "../../store/api/categoriesApi";
 import { MdChevronLeft } from "react-icons/md";
 import { backNav } from "../../utils/helpers";
@@ -13,8 +13,9 @@ export default function Foods() {
     data: products,
     error,
     isLoading,
-  } = useGetProductsQuery({ page: 1, pageSize: 10, category_id }) || {};
-  const { data: category } = useGetCategoryByIdQuery(category_id) || {};
+  } = useGetWebPageFoodsQuery({ category_id }) || {};
+  const { data: category } =
+    useGetCategoryByIdQuery({ categoryId: category_id }) || {};
 
   const back_nav = useMemo(() => {
     return backNav(location.pathname, 2);
@@ -31,9 +32,16 @@ export default function Foods() {
 
   return (
     <>
-      <div className="w-full p-[10px_20px]">
-        <div className="flex flex-col items-center gap-[18px] relative">
-          <div className="flex flex-col items-center text-center">
+      <div className="w-full p-[10px_20px] relative">
+        <div className="flex flex-col gap-[18px]">
+          <Link
+            to={back_nav}
+            className="absolute top-3 left-3 w-[45px] h-[45px] bg-[#fdbf48] flex items-center justify-center rounded-full z-10"
+          >
+            <MdChevronLeft fontSize={26} />
+          </Link>
+
+          <div className="flex flex-col items-center text-center mt-5">
             <h2 className="text-[18px] font-[500] text-[#000] leading-[normal]">
               {category?.category.name}
             </h2>
@@ -45,14 +53,9 @@ export default function Foods() {
               O'zingizning mazali taomingizni tanlang!
             </p>
           </div>
-          <Link
-            to={back_nav}
-            className="absolute top-[20px] left-[20px] w-[45px] h-[45px] bg-[#fdbf48] flex items-center justify-center rounded-full z-10"
-          >
-            <MdChevronLeft fontSize={26} />
-          </Link>
+
           <div className="grid grid-cols-[1fr_1fr] gap-x-[22px] gap-y-[16px] grid-rows-[auto]">
-            {products?.products.map((product, index) => (
+            {products?.map((product) => (
               <FoodCard key={product._id} product={product} />
             ))}
           </div>

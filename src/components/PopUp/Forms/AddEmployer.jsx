@@ -12,7 +12,7 @@ export default function AddEmployer({ AddEmployerFn }) {
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <h3 className="text-4xl font-medium text-gray-900 dark:text-white">
+      <h3 className="text-2xl font-medium text-gray-900 dark:text-white">
         Add Employer
       </h3>
 
@@ -20,7 +20,7 @@ export default function AddEmployer({ AddEmployerFn }) {
         <div className="mb-2 block">
           <Label
             htmlFor="employer_name"
-            className="text-2xl"
+            className="text-xl"
             value="Employer fullName"
           />
         </div>
@@ -35,7 +35,7 @@ export default function AddEmployer({ AddEmployerFn }) {
         <div className="mb-2 block">
           <Label
             htmlFor="employer_phone"
-            className="text-2xl"
+            className="text-xl"
             value="Employer Phone Number"
           />
         </div>
@@ -50,7 +50,7 @@ export default function AddEmployer({ AddEmployerFn }) {
         <div className="mb-2 block">
           <Label
             htmlFor="employer_password"
-            className="text-2xl"
+            className="text-xl"
             value="Employer password"
           />
         </div>
@@ -68,7 +68,7 @@ export default function AddEmployer({ AddEmployerFn }) {
           type="submit"
           className="w-1/3 py-1"
         >
-          <span className="text-xl">Edit</span>
+          <span className="text-lg">Add Employer</span>
         </Button>
       </div>
     </form>

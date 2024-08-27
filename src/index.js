@@ -17,7 +17,7 @@ root.render(
         <Flowbite>
           <App />
         </Flowbite>
-        <ToastContainer draggable position="bottom-right" />
+        <ToastContainer autoClose="500" draggable position="top-right" />
       </Provider>
     </BrowserRouter>
   </>

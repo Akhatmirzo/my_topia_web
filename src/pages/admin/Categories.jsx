@@ -58,10 +58,10 @@ export default function Categories() {
   return (
     <div className="relative">
       <div className="flex items-center justify-between py-3">
-        <h1 className="dark:text-white text-5xl">Categories</h1>
+        <h1 className="dark:text-white text-3xl">Categories</h1>
 
         <Button onClick={() => setOpenModal(true)}>
-          <span className="text-2xl">Add Category</span>
+          <span className="text-lg">Add Category</span>
         </Button>
       </div>
 
@@ -76,11 +76,11 @@ export default function Categories() {
         )}
       </div>
 
-      <PopUp openModal={edit.isEdit} setOpenModal={EditClose}>
+      <PopUp openModal={edit.isEdit} size={'md'} setOpenModal={EditClose}>
         <EditCategory edit={edit} setEdit={setEdit} />
       </PopUp>
 
-      <PopUp openModal={openModal} setOpenModal={setOpenModal}>
+      <PopUp openModal={openModal} size={'md'} setOpenModal={setOpenModal}>
         <AddCategory AddCategoryFn={create} />
       </PopUp>
 

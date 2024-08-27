@@ -1,10 +1,11 @@
 import React from "react";
-import { FiPlus } from "react-icons/fi";
+// import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import staticData from "../store/staticData";
 
 const FoodCard = ({ product }) => {
-  const { _id, name, price, images } = product;
+  const { _id, name, price, options, images } = product;
+
   return (
     <Link to={_id} className="relative w-min">
       <div className="relative mx-auto z-10 w-[122px] h-[84px] bg-[#98A8B8] rounded-[15px] overflow-hidden">
@@ -22,11 +23,12 @@ const FoodCard = ({ product }) => {
             </div>
             <div className="flex items-center justify-between pt-[4px]">
               <div className="text-[16px] text-[#36B75A] tracking-[-0.333px] font-[400] leading-[normal]">
-                {price}
+                {price && <span>{price} so'm</span>}
+                {options.length > 0 && <span>{options[0]?.price} so'm</span>}
               </div>
-              <div className="w-[30px] h-[30px] bg-[#FDBF48] rounded-[100%] cursor-pointer flex items-center justify-center">
+              {/* <div className="w-[30px] h-[30px] bg-[#FDBF48] rounded-[100%] cursor-pointer flex items-center justify-center">
                 <FiPlus color="#fff" />
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

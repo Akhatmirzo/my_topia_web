@@ -14,11 +14,14 @@ export default function NotMobile() {
         Sorry, this website is not compatible with mobile devices.
         <br />
         Your IP address: {localIp}
+        <br />
+        {YouNetwork.local}
+        {YouNetwork.network}
       </h1>
 
       <div className="border-8 border-black rounded-md p-1">
         <QRCodeCanvas
-          value={`https://my-topia-web.vercel.app/menu/table/5`}
+          value={`${YouNetwork.network}/table/8`}
           size={256}
           bgColor="#ffffff"
           fgColor="#000000"

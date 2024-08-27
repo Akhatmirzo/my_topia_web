@@ -27,10 +27,12 @@ export const employersApi = createApi({
       },
       providesTags: ["employersApi"],
     }),
+
     getEmployer: builder.query({
       query: (id) => `/one/${id}`,
       providesTags: ["employersOneApi"],
     }),
+
     createEmployer: builder.mutation({
       query: (employer) => ({
         url: "/register",
@@ -39,6 +41,7 @@ export const employersApi = createApi({
       }),
       invalidatesTags: ["employersApi"],
     }),
+
     updateEmployer: builder.mutation({
       query: (payload) => ({
         url: `/update/${payload.id}`,
@@ -47,6 +50,7 @@ export const employersApi = createApi({
       }),
       invalidatesTags: ["employersApi"],
     }),
+    
     deleteEmployer: builder.mutation({
       query: ({ id }) => ({
         url: `/delete/${id}`,

@@ -7,6 +7,7 @@ import {
 } from "../../../store/api/categoriesApi";
 import Skeleton from "../../skeletons/Skeleton";
 import { convertToBase64 } from "../../../utils/convertToBase64";
+import staticData from "../../../store/staticData";
 
 export default function EditCategory({ edit, setEdit }) {
   const [image, setImage] = useState();
@@ -38,7 +39,7 @@ export default function EditCategory({ edit, setEdit }) {
 
   return (
     <form onSubmit={handleEditCategory} className="space-y-6">
-      <h3 className="text-4xl font-medium text-gray-900 dark:text-white">
+      <h3 className="text-2xl font-medium text-gray-900 dark:text-white">
         Edit Category
       </h3>
 
@@ -50,7 +51,7 @@ export default function EditCategory({ edit, setEdit }) {
             <img
               src={
                 image ||
-                "https://my-topia.onrender.com/" + category?.image.path
+                staticData.SERVER_URL + "/" + category?.image.path
               }
               alt=""
               className="w-full h-full"
@@ -67,7 +68,7 @@ export default function EditCategory({ edit, setEdit }) {
         <div className="mb-2 block">
           <Label
             htmlFor="category_name"
-            className="text-2xl"
+            className="text-xl"
             value="Category Name"
           />
         </div>

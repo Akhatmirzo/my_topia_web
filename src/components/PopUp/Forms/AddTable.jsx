@@ -13,7 +13,7 @@ export default function AddTable({ addTableFn }) {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-      <h3 className="text-4xl font-medium text-gray-900 dark:text-white">
+      <h3 className="text-2xl font-medium text-gray-900 dark:text-white">
         Add Table
       </h3>
 
@@ -21,8 +21,8 @@ export default function AddTable({ addTableFn }) {
         <div className="mb-2 block">
           <Label
             htmlFor="table_number"
-            className="text-2xl"
-            value="Employer fullName"
+            className="text-xl"
+            value="Enter Table Number"
           />
         </div>
         <PopUpInput

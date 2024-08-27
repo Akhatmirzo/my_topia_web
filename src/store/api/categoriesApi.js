@@ -23,10 +23,12 @@ export const categoriesApi = createApi({
       query: () => "/all",
       providesTags: ["categoriesApi"],
     }),
+
     getCategoryById: builder.query({
       query: ({ categoryId }) => `/one/${categoryId}`,
       providesTags: ["categoriesOneApi"],
     }),
+
     categoryEdit: builder.mutation({
       query: (payload) => ({
         url: `/update/${payload.categoryId}`,
@@ -35,6 +37,7 @@ export const categoriesApi = createApi({
       }),
       invalidatesTags: ["categoriesApi"],
     }),
+    
     categoryDelete: builder.mutation({
       query: ({ categoryId }) => ({
         url: `/delete/${categoryId}`,

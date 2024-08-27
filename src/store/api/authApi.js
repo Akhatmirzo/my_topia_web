@@ -22,10 +22,10 @@ export const authApi = createApi({
         toast.success(response.message || "Login successful");
 
         if (response.role) {
-            localStorage.setItem("role", response.role);
-            localStorage.setItem("token", response.token);
+          localStorage.setItem("role", response.role);
+          localStorage.setItem("token", response.token);
 
-            window.location.href = "/"+response.role
+          window.location.href = "/" + response.role;
         }
 
         return response.data;

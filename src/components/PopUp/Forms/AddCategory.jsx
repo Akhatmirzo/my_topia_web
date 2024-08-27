@@ -18,7 +18,7 @@ export default function AddCategory({ AddCategoryFn }) {
 
   return (
     <form onSubmit={AddCategory} className="space-y-6">
-      <h3 className="text-4xl font-medium text-gray-900 dark:text-white">
+      <h3 className="text-2xl font-medium text-gray-900 dark:text-white">
         Add Category
       </h3>
 
@@ -29,14 +29,14 @@ export default function AddCategory({ AddCategoryFn }) {
         <div className="mb-2 block">
           <Label htmlFor="file-upload" value="Upload file" />
         </div>
-        <FileInput name="image" id="file-upload" onChange={convertFile} required />
+        <FileInput name="image" accept="image/*" id="file-upload" onChange={convertFile} required />
       </div>
 
       <div>
         <div className="mb-2 block">
           <Label
             htmlFor="category_name"
-            className="text-2xl"
+            className="text-xl"
             value="Category Name"
           />
         </div>

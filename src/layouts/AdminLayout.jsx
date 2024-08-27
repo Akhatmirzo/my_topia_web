@@ -45,8 +45,8 @@ export default function AdminLayout() {
       active: false,
     },
     {
-      title: "Products",
-      to: "/admin/products",
+      title: "Foods",
+      to: "/admin/foods",
       icon: HiTable,
       active: false,
     },
@@ -68,7 +68,7 @@ export default function AdminLayout() {
       <SidebarBasic LinkItems={newLinks} />
       <div className="flex-grow">
         <NavbarSide />
-        <div className="dark:bg-[#374151] h-[calc(100vh-62.5px)] overflow-x-hidden overflow-y-auto p-3 border-t dark:border-l">
+        <div className="dark:bg-[#374151] h-[calc(100vh-66px)] overflow-x-hidden overflow-y-auto p-3 border-t dark:border-l">
           <Outlet />
         </div>
       </div>

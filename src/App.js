@@ -10,23 +10,20 @@ import Foods from "./pages/client/Foods";
 import AdminDashboard from "./pages/admin/Dashboard";
 import EmployerDashboard from "./pages/employer/Dashboard";
 import RequireAuth from "./components/RequireAuth";
-import Home from "./pages/client/Home/Home";
 import TableLayouts from "./layouts/TableLayouts";
 import FoodsLayout from "./layouts/FoodsLayout";
 import Login from "./pages/auth/Login";
 import Employers from "./pages/admin/Employers";
 import Categories from "./pages/admin/Categories";
-import Orders from "./pages/admin/Orders";
-import Products from "./pages/admin/Products";
-import Tables from "./pages/admin/Tables";
+import Orders from "./common/Orders";
+import FoodsAdmin from "./common/Foods";
+import Tables from "./common/Tables";
 
 const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Home />} />
-
-        <Route path="/menu" element={<MainLayout />}>
+        <Route path="/" element={<MainLayout />}>
           <Route
             index
             element={
@@ -44,10 +41,10 @@ const App = () => {
               <Route index element={<Foods />} />
               <Route path=":food_id" element={<FoodDetails />} />
             </Route>
-          </Route>
 
-          {/* Cart Routes */}
-          <Route path="cart" element={<Cart />} />
+            {/* Cart Routes */}
+            <Route path="cart" element={<Cart />} />
+          </Route>
         </Route>
 
         {/* Admin Routes */}
@@ -57,7 +54,7 @@ const App = () => {
           <Route path="categories" element={<Categories />} />
           <Route path="tables" element={<Tables />} />
           <Route path="orders" element={<Orders />} />
-          <Route path="products" element={<Products />} />
+          <Route path="foods" element={<FoodsAdmin />} />
         </Route>
 
         {/* Employer Routes */}

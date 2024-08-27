@@ -35,15 +35,6 @@ export const tablesApi = createApi({
       invalidatesTags: ["tablesApi"],
     }),
 
-    updateTable: builder.mutation({
-      query: (payload) => ({
-        url: `/update/${payload.id}`,
-        method: "PUT",
-        body: payload.table,
-      }),
-      invalidatesTags: ["tablesApi"],
-    }),
-
     deleteTable: builder.mutation({
       query: ({ id }) => ({
         url: `/delete/${id}`,
@@ -59,5 +50,4 @@ export const {
   useDeleteTableMutation,
   useGetTableQuery,
   useGetTablesQuery,
-  useUpdateTableMutation,
 } = tablesApi;

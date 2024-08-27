@@ -2,8 +2,11 @@ import React from "react";
 import { Avatar, DarkThemeToggle, Dropdown, Navbar } from "flowbite-react";
 import { Link } from "react-router-dom";
 import images from "../../assets/images";
+import { useSelector } from "react-redux";
 
 export default function NavbarSide() {
+  const role = localStorage.getItem("role");
+
   return (
     <Navbar fluid>
       <Navbar title={"navbar_side"} className="p-0 m-0 sm:p-0">
@@ -20,21 +23,25 @@ export default function NavbarSide() {
               alt="User settings"
               img="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
               rounded
-              size="lg"
+              size="md"
             />
           }
         >
           <Dropdown.Header>
-            <span className="block text-3xl">Bonnie Green</span>
-            <span className="block truncate text-xl font-medium">
-              name@flowbite.com
-            </span>
+            <span className="w-[200px] block text-2xl capitalize">{role}</span>
           </Dropdown.Header>
-          <Dropdown.Item className="text-xl">Dashboard</Dropdown.Item>
           <Dropdown.Item className="text-xl">Settings</Dropdown.Item>
-          <Dropdown.Item className="text-xl">Earnings</Dropdown.Item>
           <Dropdown.Divider />
-          <Dropdown.Item className="text-xl">Sign out</Dropdown.Item>
+          <Dropdown.Item
+            className="text-xl"
+            onClick={() => {
+              localStorage.removeItem("token");
+              localStorage.removeItem("role");
+              window.location.href = "/";
+            }}
+          >
+            Sign out
+          </Dropdown.Item>
         </Dropdown>
 
         <DarkThemeToggle />
