@@ -9,7 +9,7 @@ export default function Dashboard() {
     labels: userData.map((user) => user.year),
     datasets: [
       {
-        label: "UserGained",
+        label: "Statistics",
         data: userData.map((user) => user.userGain),
       },
     ],

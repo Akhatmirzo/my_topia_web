@@ -46,6 +46,6 @@ export default function useCheckConnection() {
       .then((ip) => setLocalIP(ip))
       .catch((error) => console.error("Error getting local IP:", error));
   }, []);
-
+  
   return localIP || "0.0.0.0";
 }

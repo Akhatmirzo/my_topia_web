@@ -70,7 +70,7 @@ export default function Employers() {
 
       <div>
         {isError && (
-          <div className="text-red-500 text-center">{error.data.message}</div>
+          <div className="text-red-500 text-center">{error?.data?.message}</div>
         )}
 
         {!isError && (
