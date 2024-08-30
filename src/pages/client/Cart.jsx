@@ -13,6 +13,7 @@ import {
 import { useCreateOrderMutation } from "../../store/api/orderApi";
 import Loading from "../../components/Loadings/Loading";
 import { toast } from "react-toastify";
+import CartCard from "../../components/Card/CartCard";
 
 const Cart = ({ previousLocation }) => {
   const [loading, setLoading] = useState(false);
@@ -67,72 +68,12 @@ const Cart = ({ previousLocation }) => {
           {/* Products added to cart */}
           <div className="w-full h-[calc(100vh-350px)] overflow-y-auto overflow-x-hidden flex flex-col items-start gap-[32px] p-2">
             {cart?.products.map((item) => (
-              <div
-                key={item.itemId}
-                className="w-full flex items-start gap-[20px]"
-              >
-                <div className="min-w-[136px] h-[117px] rounded-[25px] bg-[#646982]">
-                  <img
-                    src={staticData.SERVER_URL + "/" + item.image}
-                    alt="order-photo"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="w-full flex items-start flex-col">
-                  <div className="w-full flex items-center justify-between">
-                    <h2 className="text-[18px] text-[#FDBF48] leading-[normal] font-[500]">
-                      {item.name}
-                    </h2>
-                    <div
-                      className="cursor-pointer"
-                      onClick={() => deleteItem(item.itemId)}
-                    >
-                      <img src={images.Delete} alt="delete icon" />
-                    </div>
-                  </div>
-                  <div className="w-full flex justify-between">
-                    <div className="pt-[22px] text-[20px] text-[#36B75A] font-[400] leading-[normal]">
-                      {item.totalPrice} so'm
-                    </div>
-                    {item?.additions?.length > 0 && (
-                      <div className="">
-                        <h3 className="text-[18px] text-[#36B75A] font-[400] leading-[normal]">
-                          Addition
-                        </h3>
-
-                        <ul>
-                          {item.additions.map((addition, index) => (
-                            <li key={index}>{addition.name}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                  <div className="w-[171px] flex items-center justify-between pt-[13px]">
-                    <div className="text-[18px] text-[#181C2E] font-[400] leading-[normal]">
-                      <span>{item?.options?.name}</span>
-                    </div>
-                    <div className="flex items-center gap-[19px]">
-                      <div
-                        className="cursor-pointer"
-                        onClick={() => decrement(item.itemId)}
-                        data-name="product-delete"
-                      >
-                        <img src={images.Minus} alt="" />
-                      </div>
-                      <div className="text-[16px] font-[500] text-[#FDBF48] leading-[normal]">
-                        {item.quantity}
-                      </div>
-                      <div
-                        className="cursor-pointer"
-                        onClick={() => increment(item.itemId)}
-                      >
-                        <img src={images.Plus} alt="" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <CartCard
+                cart={item}
+                increment={increment}
+                decrement={decrement}
+                deleteItem={deleteItem}
+              />
             ))}
           </div>
         </div>

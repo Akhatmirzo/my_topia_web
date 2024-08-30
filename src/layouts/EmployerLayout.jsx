@@ -44,7 +44,7 @@ export default function EmployerLayout() {
   return (
     <div className="flex">
       <SidebarBasic LinkItems={newLinks} />
-      <div className="flex-grow dark:bg-[#374151] overflow-x-hidden overflow-y-auto p-3 border-t dark:border-l">
+      <div className=" relative flex-grow dark:bg-[#374151] overflow-x-hidden overflow-y-auto p-3">
         <Outlet />
       </div>
     </div>

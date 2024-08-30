@@ -9,6 +9,7 @@ import { PopUp } from "../components/PopUp/PopUp";
 import Loading from "../components/Loadings/Loading";
 import AddTable from "../components/PopUp/Forms/AddTable";
 import { MdModeEdit, MdDeleteForever } from "react-icons/md";
+import EditClientTableOrder from "../components/PopUp/EditClientTableOrder";
 
 function calculateOrder(order) {
   return order.reduce((acc, ord) => acc + ord.total_price, 0);
@@ -21,7 +22,8 @@ export default function Tables() {
     isEdit: false,
     id: null,
   });
-  const { data, isError, isLoading, error } = useGetTablesQuery();
+  const [clientOrderTable, setClientOrderTable] = useState(null);
+  const { data, isError, isLoading } = useGetTablesQuery();
   const [addTable, result] = useCreateTableMutation();
   const [deleteTable] = useDeleteTableMutation();
   const EditClose = () => {
@@ -48,17 +50,22 @@ export default function Tables() {
     } else {
       return null;
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.log(data);
+  
+
+  const changeTableInfo = (table) => {
+    setClientOrderTable(table);
+  };
 
   return (
-    <div className="relative">
+    <div>
       <div className="flex items-center justify-between py-3">
         <h1 className="dark:text-white text-3xl">Tables</h1>
 
-        {role === "admin" && (
+        {userAuth === "admin" && (
           <Button onClick={() => setOpenModal(true)}>
             <span className="text-lg">Add Table</span>
           </Button>
@@ -75,6 +82,7 @@ export default function Tables() {
                   ? "rgba(0, 255, 28, 0.3)"
                   : "rgba(255, 0, 4, 0.3)",
               }}
+              onClick={() => changeTableInfo(table)}
             >
               <h2 className="text-2xl dark:text-white font-bold tracking-wider text-center">
                 Number: <span className="">{table.table_number}</span>
@@ -129,11 +137,22 @@ export default function Tables() {
           ))}
       </div>
 
-      <PopUp openModal={edit.isEdit} setOpenModal={EditClose}></PopUp>
+      {userAuth === "employer" && (
+        <EditClientTableOrder
+          table={clientOrderTable}
+          setTable={setClientOrderTable}
+        />
+      )}
 
-      <PopUp openModal={openModal} setOpenModal={setOpenModal}>
-        <AddTable addTableFn={addTableFn} />
-      </PopUp>
+      {userAuth === "admin" && (
+        <>
+          <PopUp openModal={edit.isEdit} setOpenModal={EditClose}></PopUp>
+
+          <PopUp openModal={openModal} setOpenModal={setOpenModal}>
+            <AddTable addTableFn={addTableFn} />
+          </PopUp>
+        </>
+      )}
 
       {isLoading || loading ? <Loading calc={"71px"} /> : ""}
     </div>
