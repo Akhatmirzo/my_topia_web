@@ -63,6 +63,8 @@ const App = () => {
           element={<RequireAuth AllowedRole={"employer"} />}
         >
           <Route index element={<EmployerDashboard />} />
+          <Route path="tables" element={<Tables />} />
+          <Route path="orders" element={<Orders />} />
         </Route>
 
         {/* Not Page */}

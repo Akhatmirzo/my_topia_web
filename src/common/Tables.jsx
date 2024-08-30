@@ -39,16 +39,16 @@ export default function Tables() {
       setLoading(false);
     }
   };
+  const token = localStorage.getItem("token");
+  const role = localStorage.getItem("role");
 
   const userAuth = useMemo(() => {
-    const token = localStorage.getItem("token");
-    const role = localStorage.getItem("role");
-
     if (token && role) {
       return role;
     } else {
       return null;
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   console.log(data);
@@ -58,9 +58,11 @@ export default function Tables() {
       <div className="flex items-center justify-between py-3">
         <h1 className="dark:text-white text-3xl">Tables</h1>
 
-        <Button onClick={() => setOpenModal(true)}>
-          <span className="text-lg">Add Table</span>
-        </Button>
+        {role === "admin" && (
+          <Button onClick={() => setOpenModal(true)}>
+            <span className="text-lg">Add Table</span>
+          </Button>
+        )}
       </div>
 
       <div className="w-full flex flex-wrap gap-5">

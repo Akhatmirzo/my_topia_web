@@ -3,7 +3,7 @@ import staticData from "../staticData";
 
 export const tablesApi = createApi({
   reducerPath: "tablesApi",
-  tagTypes: ["tablesApi"],
+  tagTypes: ["tablesApi", "tablesOneApi"],
   baseQuery: fetchBaseQuery({
     baseUrl: staticData.SERVER_URL + "/api/table",
     prepareHeaders: (headers) => {
