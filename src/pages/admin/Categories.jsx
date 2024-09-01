@@ -21,7 +21,7 @@ export default function Categories() {
   });
   const [CreateCategory, result] = useCreateCategoryMutation();
   const [DeleteCategory, deleteResult] = useCategoryDeleteMutation();
-  const { data, isLoading, isError, error } = useGetAllCategoriesQuery();
+  const { data, isLoading, isError } = useGetAllCategoriesQuery();
 
   const table = useMemo(() => {
     return createTable(data?.categories);
@@ -56,7 +56,7 @@ export default function Categories() {
   };
 
   return (
-    <div className="relative">
+    <div>
       <div className="flex items-center justify-between py-3">
         <h1 className="dark:text-white text-3xl">Categories</h1>
 
@@ -76,15 +76,15 @@ export default function Categories() {
         )}
       </div>
 
-      <PopUp openModal={edit.isEdit} size={'md'} setOpenModal={EditClose}>
+      <PopUp openModal={edit.isEdit} size={"md"} setOpenModal={EditClose}>
         <EditCategory edit={edit} setEdit={setEdit} />
       </PopUp>
 
-      <PopUp openModal={openModal} size={'md'} setOpenModal={setOpenModal}>
+      <PopUp openModal={openModal} size={"md"} setOpenModal={setOpenModal}>
         <AddCategory AddCategoryFn={create} />
       </PopUp>
 
-      {isLoading || loading ? <Loading calc={"71px"} /> : ""}
+      {isLoading || loading ? <Loading /> : ""}
     </div>
   );
 }

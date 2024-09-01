@@ -2,7 +2,6 @@ import React from "react";
 import { Avatar, DarkThemeToggle, Dropdown, Navbar } from "flowbite-react";
 import { Link } from "react-router-dom";
 import images from "../../assets/images";
-import { useSelector } from "react-redux";
 
 export default function NavbarSide() {
   const role = localStorage.getItem("role");

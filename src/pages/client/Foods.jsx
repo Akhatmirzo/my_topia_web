@@ -5,6 +5,7 @@ import { useGetWebPageFoodsQuery } from "../../store/api/webPageFoodsApi";
 import { useGetCategoryByIdQuery } from "../../store/api/categoriesApi";
 import { MdChevronLeft } from "react-icons/md";
 import { backNav } from "../../utils/helpers";
+import Loading from "../../components/Loadings/Loading";
 
 export default function Foods() {
   const location = useLocation();
@@ -27,7 +28,7 @@ export default function Foods() {
   }
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <Loading screen />;
   }
 
   return (

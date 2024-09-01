@@ -1,6 +1,7 @@
 import { Button } from "flowbite-react";
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import {
+  tablesApi,
   useCreateTableMutation,
   useDeleteTableMutation,
   useGetTablesQuery,
@@ -8,14 +9,17 @@ import {
 import { PopUp } from "../components/PopUp/PopUp";
 import Loading from "../components/Loadings/Loading";
 import AddTable from "../components/PopUp/Forms/AddTable";
-import { MdModeEdit, MdDeleteForever } from "react-icons/md";
+import { MdDeleteForever } from "react-icons/md";
 import EditClientTableOrder from "../components/PopUp/EditClientTableOrder";
+import { receiveData } from "../socket.io/SocketIo";
+import { useDispatch } from "react-redux";
 
 function calculateOrder(order) {
   return order.reduce((acc, ord) => acc + ord.total_price, 0);
 }
 
 export default function Tables() {
+  const dispatch = useDispatch();
   const [loading, setLoading] = useState(false);
   const [openModal, setOpenModal] = useState(false);
   const [edit, setEdit] = useState({
@@ -54,11 +58,34 @@ export default function Tables() {
   }, []);
 
   console.log(data);
-  
 
   const changeTableInfo = (table) => {
     setClientOrderTable(table);
   };
+
+  useEffect(() => {
+    receiveData("updateTable", (data) => {
+      console.log(data);
+
+      dispatch(
+        tablesApi.util.updateQueryData(
+          "getTables",
+          undefined,
+          (draftOrders) => {
+            console.log(draftOrders);
+
+            draftOrders.tables = draftOrders.tables.map((table) => {
+              if (table._id === data._id) {
+                return data;
+              } else {
+                return table;
+              }
+            });
+          }
+        )
+      );
+    });
+  }, [dispatch]);
 
   return (
     <div>
@@ -76,13 +103,18 @@ export default function Tables() {
         {!isError &&
           data?.tables.map((table) => (
             <div
+              key={table._id}
               className="w-[300px] min-h-[250px] border-2 p-4 rounded-lg"
               style={{
                 backgroundColor: table.empty
                   ? "rgba(0, 255, 28, 0.3)"
                   : "rgba(255, 0, 4, 0.3)",
               }}
-              onClick={() => changeTableInfo(table)}
+              onClick={
+                userAuth === "employer"
+                  ? () => changeTableInfo(table)
+                  : () => ""
+              }
             >
               <h2 className="text-2xl dark:text-white font-bold tracking-wider text-center">
                 Number: <span className="">{table.table_number}</span>
@@ -98,12 +130,18 @@ export default function Tables() {
                     : {}
                 }
               >
-                <div className="h-full">
+                <div className="h-[200px] overflow-x-hidden overflow-y-auto">
                   {!table.empty
                     ? table.order.map((order) => (
-                        <ul className="flex gap-1 items-center flex-wrap">
-                          {order.products.map((product) => (
-                            <li>
+                        <ul
+                          key={order._id}
+                          className="flex gap-2 items-center flex-wrap"
+                        >
+                          {order.products.map((product, index) => (
+                            <li key={product._id}>
+                              <span className="text-lg font-bold tracking-wider text-slate-300">
+                                {index + 1}.
+                              </span>
                               <span className="text-lg font-bold tracking-wider text-slate-300">
                                 {product.product_id.name}
                               </span>
@@ -154,7 +192,7 @@ export default function Tables() {
         </>
       )}
 
-      {isLoading || loading ? <Loading calc={"71px"} /> : ""}
+      {isLoading || loading ? <Loading /> : ""}
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import React from "react";
-// import { FiPlus } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import staticData from "../store/staticData";
 
@@ -26,9 +25,6 @@ const FoodCard = ({ product }) => {
                 {price && <span>{price} so'm</span>}
                 {options.length > 0 && <span>{options[0]?.price} so'm</span>}
               </div>
-              {/* <div className="w-[30px] h-[30px] bg-[#FDBF48] rounded-[100%] cursor-pointer flex items-center justify-center">
-                <FiPlus color="#fff" />
-              </div> */}
             </div>
           </div>
         </div>

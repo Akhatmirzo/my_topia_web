@@ -5,7 +5,7 @@ import staticData from "../../store/staticData";
 export default function CartCard({ cart, increment, decrement, deleteItem }) {
   return (
     <div key={cart.itemId} className="w-full flex items-start gap-[20px]">
-      <div className="min-w-[136px] h-[117px] rounded-[25px] bg-[#646982]">
+      <div className="min-w-[80px] w-full h-full rounded-[25px] bg-[#646982]">
         <img
           src={staticData.SERVER_URL + "/" + cart.image}
           alt="order-photo"
@@ -25,9 +25,9 @@ export default function CartCard({ cart, increment, decrement, deleteItem }) {
           </div>
         </div>
         <div className="w-full flex justify-between">
-          <div className="pt-[22px] text-[20px] text-[#36B75A] font-[400] leading-[normal]">
+          <h2 className="pt-[18px] text-[18px] text-[#36B75A] font-[400] leading-[normal]">
             {cart.totalPrice} so'm
-          </div>
+          </h2>
           {cart?.additions?.length > 0 && (
             <div className="">
               <h3 className="text-[18px] text-[#36B75A] font-[400] leading-[normal]">

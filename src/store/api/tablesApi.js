@@ -26,6 +26,14 @@ export const tablesApi = createApi({
       providesTags: ["tablesOneApi"],
     }),
 
+    changeTableOrder: builder.mutation({
+      query: ({ tableId, status }) => ({
+        url: `/update/order/${tableId}`,
+        method: "PUT",
+        body: { status },
+      }),
+    }),
+
     createTable: builder.mutation({
       query: (table) => ({
         url: "/create",
@@ -50,4 +58,5 @@ export const {
   useDeleteTableMutation,
   useGetTableQuery,
   useGetTablesQuery,
+  useChangeTableOrderMutation,
 } = tablesApi;

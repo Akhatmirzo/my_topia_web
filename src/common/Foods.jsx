@@ -14,7 +14,7 @@ import AdminFoodCard from "../components/AdminFoodCard";
 export default function Foods() {
   const [openModal, setOpenModal] = useState(false);
   const { data, isError, isLoading } = useGetFoodsQuery({ category_id: "" });
-  const [createFoods, result] = useCreateFoodMutation();
+  const [createFoods] = useCreateFoodMutation();
   const [deleteFood] = useDeleteFoodMutation();
 
   const handleCreateFood = async (food) => {
@@ -48,7 +48,7 @@ export default function Foods() {
   };
 
   return (
-    <div className="relative">
+    <div>
       <div className="flex items-center justify-between py-3">
         <h1 className="dark:text-white text-3xl">Foods</h1>
 
@@ -71,7 +71,7 @@ export default function Foods() {
         <AddFood AddFoodFn={handleCreateFood} />
       </PopUp>
 
-      {isLoading && <Loading calc={"71px"} />}
+      {isLoading && <Loading />}
     </div>
   );
 }

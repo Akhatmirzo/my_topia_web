@@ -9,7 +9,7 @@ import { useForm } from "react-hook-form";
 
 export default function EditEmployer({ edit, setEdit }) {
   const [edit_employer, editResult] = useUpdateEmployerMutation();
-  const { data, isLoading, error, isError } = useGetEmployersQuery();
+  const { data, isLoading, isError } = useGetEmployersQuery();
   const { register, handleSubmit, reset } = useForm();
 
   const editEmployerData = useMemo(() => {
