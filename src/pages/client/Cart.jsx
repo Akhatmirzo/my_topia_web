@@ -1,9 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { MdChevronLeft } from "react-icons/md";
-import images from "../../assets/images";
 import { useDispatch, useSelector } from "react-redux";
-import staticData from "../../store/staticData";
 import {
   clearCart,
   decrementQuantity,
@@ -12,15 +10,13 @@ import {
 } from "../../store/slices/CartSlice";
 import { useCreateOrderMutation } from "../../store/api/orderApi";
 import Loading from "../../components/Loadings/Loading";
-import { toast } from "react-toastify";
 import CartCard from "../../components/Card/CartCard";
 
 const Cart = ({ previousLocation }) => {
   const [loading, setLoading] = useState(false);
   const { table } = useParams();
   const cart = useSelector((state) => state.cart);
-  const [createOrder, { error, isError, isLoading, isSuccess }] =
-    useCreateOrderMutation();
+  const [createOrder, { isLoading }] = useCreateOrderMutation();
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -45,8 +41,18 @@ const Cart = ({ previousLocation }) => {
     }
   };
 
-  const handleCreateOrder = (order) => {
-    createOrder({ ...order, table_number: table });
+  const handleCreateOrder = async (order) => {
+    setLoading(true);
+    try {
+      await createOrder({ ...order, table_number: table }).unwrap();
+
+      dispatch(clearCart());
+    } catch (error) {
+      console.error(error);
+      return;
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -66,9 +72,10 @@ const Cart = ({ previousLocation }) => {
             </div>
           </div>
           {/* Products added to cart */}
-          <div className="w-full h-[calc(100vh-350px)] overflow-y-auto overflow-x-hidden flex flex-col items-start gap-[32px] p-2">
+          <div className="w-full h-[calc(100vh-350px)] overflow-y-auto overflow-x-hidden flex flex-col items-start gap-[32px]">
             {cart?.products.map((item) => (
               <CartCard
+                key={item.itemId}
                 cart={item}
                 increment={increment}
                 decrement={decrement}
@@ -84,9 +91,9 @@ const Cart = ({ previousLocation }) => {
             <div className="text-[18px] font-[600] leading-[24px] text-[#36B75A] uppercase">
               Umumiy:
             </div>
-            <div className="text-[34px] font-[500] text-[#FDBF48] leading-[normal]">
+            <h2 className="text-[34px] font-[500] text-[#FDBF48] leading-[normal]">
               {cart.total} so'm
-            </div>
+            </h2>
           </div>
           <button
             type="button"
@@ -100,7 +107,7 @@ const Cart = ({ previousLocation }) => {
         </div>
       </div>
 
-      {loading ? <Loading calc={"71px"} /> : ""}
+      {loading ? <Loading /> : ""}
     </div>
   );
 };

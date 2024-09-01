@@ -1,6 +1,6 @@
 import React from "react";
 import staticData from "../store/staticData";
-import { Button, Card, Label, Radio } from "flowbite-react";
+import { Button, Card} from "flowbite-react";
 
 export default function AdminFoodCard({ food, deleted, updated }) {
   const { _id, name, price, characteristics, addition, images, options } =

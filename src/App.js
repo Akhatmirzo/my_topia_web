@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Hero from "./pages/client/Hero";
@@ -18,8 +18,16 @@ import Categories from "./pages/admin/Categories";
 import Orders from "./common/Orders";
 import FoodsAdmin from "./common/Foods";
 import Tables from "./common/Tables";
+import { disconnect, isConnected } from "./socket.io/SocketIo";
 
 const App = () => {
+  useEffect(() => {
+    localStorage.setItem("flowbite-theme-mode", "dark");
+  }, []);
+
+  isConnected();
+  disconnect();
+
   return (
     <>
       <Routes>

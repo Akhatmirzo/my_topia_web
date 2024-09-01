@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useLoginMutation } from "../../store/api/authApi";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../components/Loadings/Loading";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -29,7 +30,7 @@ export default function Login() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  if (result.isLoading) return <h1>Loading....</h1>;
+  if (result.isLoading) return <Loading />;
 
   return (
     <div className="bg-yellow-400 h-screen overflow-hidden flex items-center justify-center">

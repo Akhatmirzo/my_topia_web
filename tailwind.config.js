@@ -35,6 +35,8 @@ module.exports = {
       mysm: { max: "540px" },
 
       esm: { max: "379px" },
+
+      esm2: { max: "375px" },
       // => @media (max-width: 379px) { ... }
     },
   },

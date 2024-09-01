@@ -27,7 +27,7 @@ export default function MainLayout() {
           {isConnect ? (
             <>
               <TopNav />
-              <div>
+              <div className="relative h-[calc(100vh-70px)]">
                 <Outlet />
               </div>
             </>

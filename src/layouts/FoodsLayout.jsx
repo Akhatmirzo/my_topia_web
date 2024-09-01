@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 
 export default function FoodsLayout() {
   return (
-    <div>
+    <div className="relative">
       <Outlet />
     </div>
   );

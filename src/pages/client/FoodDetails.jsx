@@ -12,6 +12,7 @@ import { addToCart } from "../../store/slices/CartSlice";
 import { toast } from "react-toastify";
 import { uid } from "uid";
 import { Label, Radio } from "flowbite-react";
+import Loading from "../../components/Loadings/Loading"
 
 const FoodDetails = () => {
   const dispatch = useDispatch();
@@ -106,7 +107,7 @@ const FoodDetails = () => {
     return backNav(location.pathname);
   }, [location]);
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <Loading screen />;
   if (error) return <div>Error: {error.message}</div>;
 
   return (

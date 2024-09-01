@@ -59,7 +59,7 @@ export default function Employers() {
   };
 
   return (
-    <div className="relative">
+    <div>
       <div className="flex items-center justify-between py-3">
         <h1 className="dark:text-white text-3xl">Employers</h1>
 

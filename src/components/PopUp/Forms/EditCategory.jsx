@@ -1,9 +1,8 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import { Button, FileInput, Label } from "flowbite-react";
 import {
   useCategoryEditMutation,
   useGetAllCategoriesQuery,
-  useGetCategoryByIdQuery,
 } from "../../../store/api/categoriesApi";
 import Skeleton from "../../skeletons/Skeleton";
 import { convertToBase64 } from "../../../utils/convertToBase64";
@@ -12,7 +11,7 @@ import staticData from "../../../store/staticData";
 export default function EditCategory({ edit, setEdit }) {
   const [image, setImage] = useState();
   const [EditCategory, result] = useCategoryEditMutation();
-  const { data, error, isError, isLoading } = useGetAllCategoriesQuery();
+  const { data, isError, isLoading } = useGetAllCategoriesQuery();
 
   const category = useMemo(() => {
     return data?.categories.find((category) => category._id === edit.id);
