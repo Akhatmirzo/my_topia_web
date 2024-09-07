@@ -15,12 +15,12 @@ export default function Hero() {
   return (
     <div className="w-full h-auto">
       <div className="w-full h-auto flex flex-col items-center p-[12px_42px]">
-        <h2 className="text-[18px] text-[#000] font-[500]">Table: {table} </h2>
+        <h2 className="text-[18px] text-[#000] font-[500] ">Table: {table} </h2>
         <div className=" flex flex-col items-start">
-          <h3 className=" text-[18px] text-[#000] font-[500]">
+          <h3 className=" text-[18px] esm2:text-[16px] text-[#000] font-[500]">
             What’s on your <span className="text-[#FDBF48]">mind?</span>
           </h3>
-          <h4 className=" text-[18px] text-[#000] font-[500] pl-[44px]">
+          <h4 className=" text-[18px] esm2:text-[16px] text-[#000] font-[500] pl-[44px] esm2:pl-[22px]">
             Nimalarni <span className="text-[#FDBF48]">xayol</span> qilyapsiz?
           </h4>
         </div>

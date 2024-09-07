@@ -32,8 +32,8 @@ export const OrderApi = createApi({
       invalidatesTags: ["orders"],
     }),
     getAllOrders: builder.query({
-      query: () => ({
-        url: "/all",
+      query: ({ page }) => ({
+        url: `/all?page=${page}`,
       }),
       transformResponse: (response) => {
         toast.success(response.message);
@@ -69,4 +69,8 @@ export const OrderApi = createApi({
   }),
 });
 
-export const { useCreateOrderMutation, useGetAllOrdersQuery, useDeleteOrderMutation } = OrderApi;
+export const {
+  useCreateOrderMutation,
+  useGetAllOrdersQuery,
+  useDeleteOrderMutation,
+} = OrderApi;

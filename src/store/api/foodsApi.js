@@ -16,7 +16,7 @@ export const FoodsApi = createApi({
   endpoints: (builder) => ({
     getFoods: builder.query({
       query: ({ category_id }) => ({
-        url: `/all?category_id=${category_id}`,
+        url: `/all?category_id=${category_id ? category_id : ""}`,
       }),
       providesTags: ["foodsApi"],
     }),

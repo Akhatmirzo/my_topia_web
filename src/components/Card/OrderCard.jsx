@@ -1,5 +1,6 @@
 import React from "react";
 import { useDeleteOrderMutation } from "../../store/api/orderApi";
+import { uid } from "uid";
 
 function getTimeOrder(time) {
   let newTimeArr = time.split("T");
@@ -9,9 +10,9 @@ function getTimeOrder(time) {
 }
 
 export default function OrderCard({
+  role,
   order: { _id, createdAt, total_price, products, table_number, status },
 }) {
-  const role = localStorage.getItem("role");
   const [deleteOrder] = useDeleteOrderMutation();
   return (
     <div
@@ -25,7 +26,7 @@ export default function OrderCard({
 
         <h6 className="mb-4 text-xl font-medium text-gray-500 dark:text-gray-400">
           {getTimeOrder(createdAt).map((time) => (
-            <span className="block text-lg text-right">{time}</span>
+            <span key={uid()} className="block text-lg text-right">{time}</span>
           ))}
         </h6>
       </div>
@@ -56,7 +57,7 @@ export default function OrderCard({
 
       <ul className="space-y-5 my-7">
         {products.map(({ product_id, quantity }) => (
-          <li className="flex items-center">
+          <li key={uid()} className="flex items-center">
             <svg
               className="flex-shrink-0 w-4 h-4 text-blue-700 dark:text-blue-500"
               aria-hidden="true"

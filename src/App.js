@@ -19,6 +19,8 @@ import Orders from "./common/Orders";
 import FoodsAdmin from "./common/Foods";
 import Tables from "./common/Tables";
 import { disconnect, isConnected } from "./socket.io/SocketIo";
+import ClientOrder from "./pages/client/Orders"
+import EmployerCart from "./pages/employer/EmployerCart";
 
 const App = () => {
   useEffect(() => {
@@ -35,11 +37,13 @@ const App = () => {
           <Route
             index
             element={
-              <h1 className="w-full h-[calc(100vh-100px)] flex items-center justify-center text-5xl text-center px-1">
+              <h1 className="w-full h-[calc(100vh-100px)] flex items-center justify-center text-5xl text-center px-1 mysm:text-2xl">
                 Please scan the QR code available on the Table
               </h1>
             }
           />
+
+          <Route path="orders" element={<ClientOrder role={"client"} />} />
 
           {/* Table Routes */}
           <Route path="table/:table" element={<TableLayouts />}>
@@ -61,7 +65,7 @@ const App = () => {
           <Route path="employers" element={<Employers />} />
           <Route path="categories" element={<Categories />} />
           <Route path="tables" element={<Tables />} />
-          <Route path="orders" element={<Orders />} />
+          <Route path="orders" element={<Orders role={"admin"} />} />
           <Route path="foods" element={<FoodsAdmin />} />
         </Route>
 
@@ -72,7 +76,8 @@ const App = () => {
         >
           <Route index element={<EmployerDashboard />} />
           <Route path="tables" element={<Tables />} />
-          <Route path="orders" element={<Orders />} />
+          <Route path="orders" element={<Orders role={"employer"} />} />
+          <Route path="cart" element={<EmployerCart />} />
         </Route>
 
         {/* Not Page */}

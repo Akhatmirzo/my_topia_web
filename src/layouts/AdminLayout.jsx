@@ -64,11 +64,11 @@ export default function AdminLayout() {
   }, [location])
 
   return (
-    <div className="flex">
-      <SidebarBasic LinkItems={newLinks} />
+    <div className="flex w-full h-screen overflow-hidden">
+      <SidebarBasic role={"admin"} LinkItems={newLinks} />
       <div className="flex-grow">
         <NavbarSide />
-        <div className="dark:bg-[#374151] h-[calc(100vh-66px)] overflow-x-hidden overflow-y-auto p-3 border-t dark:border-l relative">
+        <div className="dark:bg-[#374151] w-full h-[calc(100vh-66px)] overflow-x-hidden overflow-y-auto p-3 border-t dark:border-l relative">
           <Outlet />
         </div>
       </div>

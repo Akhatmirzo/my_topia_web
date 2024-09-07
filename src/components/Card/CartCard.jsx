@@ -2,17 +2,48 @@ import React from "react";
 import images from "../../assets/images";
 import staticData from "../../store/staticData";
 
-export default function CartCard({ cart, increment, decrement, deleteItem }) {
+export default function CartCard({
+  cart,
+  increment,
+  decrement,
+  deleteItem,
+  role,
+}) {
   return (
-    <div key={cart.itemId} className="w-full flex items-start gap-[20px]">
-      <div className="min-w-[80px] w-full h-full rounded-[25px] bg-[#646982]">
+    <div
+      key={cart.itemId}
+      style={
+        role === "employer"
+          ? {
+              width: "max-content",
+              boxShadow:
+                "rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset",
+              overflow: "hidden",
+              borderRadius: "15px",
+              backgroundColor: "rgba(50, 65, 81, 1)",
+            }
+          : {}
+      }
+      className="w-full flex items-start gap-[20px]"
+    >
+      <div
+        style={role === "employer" ? { width: "300px" } : {}}
+        className="min-w-[80px] w-full h-full rounded-[25px] bg-[#646982]"
+      >
         <img
           src={staticData.SERVER_URL + "/" + cart.image}
           alt="order-photo"
           className="w-full h-full object-cover"
         />
       </div>
-      <div className="w-full flex items-start flex-col">
+      <div
+        style={
+          role === "employer"
+            ? { width: "max-content", padding: "10px 10px 10px 0px" }
+            : {}
+        }
+        className="w-full flex items-start flex-col"
+      >
         <div className="w-full flex items-center justify-between">
           <h2 className="text-[18px] text-[#FDBF48] leading-[normal] font-[500]">
             {cart.name}

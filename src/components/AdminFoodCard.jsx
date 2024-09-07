@@ -9,7 +9,7 @@ export default function AdminFoodCard({ food, deleted, updated }) {
   return (
     <Card
       id="adminCard"
-      className="max-w-sm rounded overflow-hidden shadow-lg bg-white"
+      className="max-w-sm w-full rounded overflow-hidden shadow-lg bg-white"
     >
       <img src={staticData.SERVER_URL + "/" + images[0]?.path} alt="" />
 
@@ -30,7 +30,7 @@ export default function AdminFoodCard({ food, deleted, updated }) {
         )}
 
         {options && (
-          <div className="flex items-center gap-10">
+          <div className="flex items-center flex-wrap gap-10 mysm:gap-2">
             {options?.map((option, index) => (
               <ul key={index} className="flex items-center gap-2">
                 <li className="dark:text-white text-black">{option.name}: {option.price}</li>

@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 
 export default function useCheckConnection() {
-  const [localIP, setLocalIP] = useState("");
+  const [localIP, setLocalIP] = useState({
+    ip: null,
+    check: false,
+  });
 
   useEffect(() => {
     const getLocalIP = async () => {
@@ -22,14 +25,20 @@ export default function useCheckConnection() {
         pc.onicecandidate = (ice) => {
           if (ice.candidate) {
             // console.log(ice.candidate);
-            let myIP = /^192\.168\.1\.\d{1,3}$/.test(ice.candidate.address);
-            // let myIP = /^10\.10\.2\.\d{1,3}$/.test(ice.candidate.address);
+            // let myIP = /^192\.168\.1\.\d{1,3}$/.test(ice.candidate.address);
+            let myIP = /^10\.10\.1\.\d{1,3}$/.test(ice.candidate.address);
             pc.onicecandidate = noop;
 
             if (myIP) {
-              return resolve(ice.candidate.address);
+              return resolve({
+                ip: ice.candidate.address,
+                check: true,
+              });
             } else {
-              resolve(ice.candidate.address);
+              return resolve({
+                ip: ice.candidate.address,
+                check: false,
+              });
             }
           }
 
@@ -43,9 +52,11 @@ export default function useCheckConnection() {
     };
 
     getLocalIP()
-      .then((ip) => setLocalIP(ip))
+      .then((ip) => {
+        setLocalIP(ip);
+      })
       .catch((error) => console.error("Error getting local IP:", error));
   }, []);
-  
-  return localIP || "0.0.0.0";
+
+  return localIP;
 }

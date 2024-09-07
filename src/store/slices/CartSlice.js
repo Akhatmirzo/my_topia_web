@@ -16,7 +16,7 @@ const cartSlice = createSlice({
   reducers: {
     addToCart: (state, action) => {
       state.products.push(action.payload);
-      state.total = calculateTotalPrice(state.products)
+      state.total = calculateTotalPrice(state.products);
       localStorage.setItem("cart", JSON.stringify(state));
     },
     removeFromCart: (state, action) => {
@@ -24,8 +24,10 @@ const cartSlice = createSlice({
         (item) => item.itemId === action.payload
       );
       if (itemToRemove) {
-        state.products = state.products.filter((item) => item.itemId !== action.payload);
-        state.total = calculateTotalPrice(state.products)
+        state.products = state.products.filter(
+          (item) => item.itemId !== action.payload
+        );
+        state.total = calculateTotalPrice(state.products);
         localStorage.setItem("cart", JSON.stringify(state));
       }
     },
@@ -46,7 +48,7 @@ const cartSlice = createSlice({
       });
 
       state.products = itemToUpdate;
-      state.total = calculateTotalPrice(state.products)
+      state.total = calculateTotalPrice(state.products);
       localStorage.setItem("cart", JSON.stringify(state));
     },
     decrementQuantity: (state, action) => {
@@ -65,7 +67,7 @@ const cartSlice = createSlice({
         }
       });
       state.products = itemToUpdate;
-      state.total = calculateTotalPrice(state.products)
+      state.total = calculateTotalPrice(state.products);
       localStorage.setItem("cart", JSON.stringify(state));
     },
     updateAddition: (state, action) => {
@@ -78,20 +80,26 @@ const cartSlice = createSlice({
             addition,
             item.options
           );
-          return {...item, additions: addition, totalPrice };
+          return { ...item, additions: addition, totalPrice };
         } else {
           return item;
         }
       });
       state.products = itemToUpdate;
-      state.total = calculateTotalPrice(state.products)
+      state.total = calculateTotalPrice(state.products);
       localStorage.setItem("cart", JSON.stringify(state));
     },
     clearCart: (state) => {
       state.products = [];
       state.total = 0;
-      localStorage.clear("cart");
-    }
+      localStorage.setItem(
+        "cart",
+        JSON.stringify({
+          products: [],
+          total: 0,
+        })
+      );
+    },
   },
 });
 

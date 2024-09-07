@@ -59,16 +59,16 @@ export default function Employers() {
   };
 
   return (
-    <div>
+    <div className="w-full">
       <div className="flex items-center justify-between py-3">
-        <h1 className="dark:text-white text-3xl">Employers</h1>
+        <h1 className="dark:text-white text-3xl mysm:text-xl">Employers</h1>
 
         <Button onClick={() => setOpenModal(true)}>
-          <span className="text-lg">Add Employer</span>
+          <span className="text-lg mysm:text-sm">Add Employer</span>
         </Button>
       </div>
 
-      <div>
+      <div className="w-[calc(100vw-24px)] lg:w-full">
         {isError && (
           <div className="text-red-500 text-center">{error?.data?.message}</div>
         )}
@@ -78,7 +78,7 @@ export default function Employers() {
             update={{ edit, setEdit }}
             deleteData={handleDeleteEmployer}
             table={tableData}
-            hiddenKeys={["_id", "__v", "password"]}
+            hiddenKeys={["_id", "__v", "password", "createdAt", "updatedAt"]}
           />
         )}
       </div>
@@ -91,7 +91,7 @@ export default function Employers() {
         <AddEmployer AddEmployerFn={handleAddEmployer} />
       </PopUp>
 
-      {isLoading || loading ? <Loading calc={"71px"} /> : ""}
+      {isLoading || loading ? <Loading /> : ""}
     </div>
   );
 }

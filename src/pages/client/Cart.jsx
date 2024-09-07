@@ -11,12 +11,13 @@ import {
 import { useCreateOrderMutation } from "../../store/api/orderApi";
 import Loading from "../../components/Loadings/Loading";
 import CartCard from "../../components/Card/CartCard";
+import { addOrder } from "../../store/slices/OrderSlice";
 
 const Cart = ({ previousLocation }) => {
   const [loading, setLoading] = useState(false);
   const { table } = useParams();
   const cart = useSelector((state) => state.cart);
-  const [createOrder, { isLoading }] = useCreateOrderMutation();
+  const [createOrder] = useCreateOrderMutation();
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -44,7 +45,12 @@ const Cart = ({ previousLocation }) => {
   const handleCreateOrder = async (order) => {
     setLoading(true);
     try {
-      await createOrder({ ...order, table_number: table }).unwrap();
+      const response = await createOrder({
+        ...order,
+        table_number: table,
+      }).unwrap();
+      
+      dispatch(addOrder(response));
 
       dispatch(clearCart());
     } catch (error) {
