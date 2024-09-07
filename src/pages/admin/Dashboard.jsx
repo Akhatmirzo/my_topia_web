@@ -67,14 +67,14 @@ export default function Dashboard() {
   return (
     <div>
       <div className="relative flex flex-col">
-        <div className="absolute top-0 right-5 flex items-center gap-2">
+        <div className="absolute top-0 right-5 mysm:relative mysm:right-0 mysm:justify-end flex items-center gap-2">
           {dateType === "day" && (
             <Datepicker
-              className="w-[300px]"
+              className="w-[300px] mysm:w-2/3"
               onSelectedDateChanged={(e) => getDate(e)}
             />
           )}
-          <div className="w-[100px]">
+          <div className="w-[100px] mysm:w-1/3">
             <Select
               id="countries"
               required
@@ -90,8 +90,16 @@ export default function Dashboard() {
             </Select>
           </div>
         </div>
-        <div className="w-full h-full">
-          <Bar data={state} />
+        <div className="w-full h-[calc(100vh-30vh)] mysm:h-[calc(100vh-50vh)]">
+          <Bar
+            data={state}
+            height={null}
+            width={null}
+            options={{
+              maintainAspectRatio: false
+              // aspectRatio: 1, // this would be a 1:1 aspect ratio
+            }}
+          />
         </div>
       </div>
     </div>

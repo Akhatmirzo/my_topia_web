@@ -9,11 +9,15 @@ import { FoodsApi } from "./api/foodsApi";
 import CartSlice from "./slices/CartSlice";
 import { OrderApi } from "./api/orderApi";
 import statisticsApi from "./api/statisticsApi";
+import SidebarSlice from "./slices/SidebarSlice";
+import OrderSlice from "./slices/OrderSlice";
 
 const store = configureStore({
   reducer: {
     // Define your reducers here
     cart: CartSlice,
+    clientOrder: OrderSlice,
+    sidebarSlice: SidebarSlice,
     [WebPageFoodsApi.reducerPath]: WebPageFoodsApi.reducer,
     [statisticsApi.reducerPath]: statisticsApi.reducer,
     [categoriesApi.reducerPath]: categoriesApi.reducer,

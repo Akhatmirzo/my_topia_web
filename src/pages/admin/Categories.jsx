@@ -58,10 +58,10 @@ export default function Categories() {
   return (
     <div>
       <div className="flex items-center justify-between py-3">
-        <h1 className="dark:text-white text-3xl">Categories</h1>
+        <h1 className="dark:text-white text-3xl mysm:text-xl">Categories</h1>
 
         <Button onClick={() => setOpenModal(true)}>
-          <span className="text-lg">Add Category</span>
+          <span className="text-lg mysm:text-sm">Add Category</span>
         </Button>
       </div>
 

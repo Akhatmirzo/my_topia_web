@@ -8,11 +8,11 @@ export default function SuperTableItem({ keys, index, tableItem, update, deleteD
   console.log(keys?.length);
   return (
     <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
-      <Table.Cell className="p-4 w-[30px] text-center">{index + 1}</Table.Cell>
+      <Table.Cell className="p-4 mysm:p-2 w-[30px] text-center">{index + 1}</Table.Cell>
       {keys?.map((key) => (
         <Table.Cell
           key={uid()}
-          className={`p-4`}
+          className={`p-4 mysm:p-2`}
           style={{width: `calc(100% / ${keys?.length})`}}
         >
           {tableItem[key]}

@@ -13,16 +13,16 @@ export default function MainLayout() {
   const localIp = useCheckConnection();
 
   useEffect(() => {
-    if (localIp !== "0.0.0.0") {
+    if (localIp?.check) {
       setIsConnect(true);
     } else {
-      setIsConnect(true);
+      setIsConnect(false);
     }
   }, [localIp, isConnect, navigate]);
-
+  
   return (
     <div>
-      {windowWidth.innerWidth <= 540 ? (
+      {windowWidth?.innerWidth <= 540 ? (
         <>
           {isConnect ? (
             <>

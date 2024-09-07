@@ -13,7 +13,7 @@ export default function NotMobile() {
       <h1 className="text-xl text-bold max-w-sm text-center">
         Sorry, this website is not compatible with mobile devices.
         <br />
-        Your IP address: {localIp}
+        Your IP address: {localIp?.ip}
         <br />
         {YouNetwork.local}
         {YouNetwork.network}

@@ -61,7 +61,7 @@ nav[title="navbar_side"] > div {
   justify-content: start !important;
 }
 
-#sidebarLink > li> a> span {
+#sidebarLink > li > a > span {
   display: none;
 
   @media (min-width: 1024px) {
