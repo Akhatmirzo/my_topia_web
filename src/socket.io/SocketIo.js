@@ -1,9 +1,10 @@
 import { io } from "socket.io-client";
+import staticData from "../store/staticData";
 
 // Replace with your actual token
 const token = localStorage.getItem("token");
 
-const socket = io("http://localhost:8080", {
+const socket = io(staticData.SERVER_URL, {
   query: {
     authorization: token,
   },
