@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.00cf4d53.css",
-    "main.js": "/static/js/main.6b6faed2.js",
+    "main.js": "/static/js/main.f1dc89b2.js",
     "static/media/Maytopia-control.svg": "/static/media/Maytopia-control.1c233ba01f23d634f188c25d925d5879.svg",
     "static/media/Maytopia-logo.svg": "/static/media/Maytopia-logo.bde65c6bfbd6b961c2aa79038b938868.svg",
     "static/media/cart-icon.svg": "/static/media/cart-icon.94a9f1fe43b2fa2e5a5ace1d41bf5951.svg",
@@ -10,10 +10,10 @@
     "static/media/cross-icon.svg": "/static/media/cross-icon.ea6b6348fbfaaffa23091246a50826ae.svg",
     "static/media/minus.svg": "/static/media/minus.d02306a9939b371bebf86abfc17404ff.svg",
     "main.00cf4d53.css.map": "/static/css/main.00cf4d53.css.map",
-    "main.6b6faed2.js.map": "/static/js/main.6b6faed2.js.map"
+    "main.f1dc89b2.js.map": "/static/js/main.f1dc89b2.js.map"
   },
   "entrypoints": [
     "static/css/main.00cf4d53.css",
-    "static/js/main.6b6faed2.js"
+    "static/js/main.f1dc89b2.js"
   ]
 }
