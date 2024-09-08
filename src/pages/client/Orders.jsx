@@ -31,7 +31,7 @@ export default function Orders({ role }) {
       </div>
       <div className="flex flex-wrap gap-4 justify-center mt-10">
         {clientOrder?.orders?.length > 0 &&
-          clientOrder?.orders?.map((order) => <OrderCard order={order} role={role} />)}
+          clientOrder?.orders?.map((order) => <OrderCard key={order._id} order={order} role={role} />)}
 
         {clientOrder?.orders?.length === 0 && (
           <div className="text-center py-10">

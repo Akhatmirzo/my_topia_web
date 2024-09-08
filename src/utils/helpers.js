@@ -29,6 +29,17 @@ function checkTotalPriceFn(price, qty, additionalItems, option) {
   }
 
   return totalItemPrice;
-};
+}
 
-export { backNav, checkTotalPriceFn };
+function getTimeOrder(time) {
+  if (time) {
+    let newTimeArr = time.split("T");
+    let oclock = newTimeArr[1].split(".")[0];
+
+    return [newTimeArr[0], oclock];
+  }else {
+    return null
+  }
+}
+
+export { backNav, checkTotalPriceFn, getTimeOrder };

@@ -19,7 +19,7 @@ import Orders from "./common/Orders";
 import FoodsAdmin from "./common/Foods";
 import Tables from "./common/Tables";
 import { disconnect, isConnected } from "./socket.io/SocketIo";
-import ClientOrder from "./pages/client/Orders"
+import ClientOrder from "./pages/client/Orders";
 import EmployerCart from "./pages/employer/EmployerCart";
 
 const App = () => {
@@ -43,8 +43,6 @@ const App = () => {
             }
           />
 
-          <Route path="orders" element={<ClientOrder role={"client"} />} />
-
           {/* Table Routes */}
           <Route path="table/:table" element={<TableLayouts />}>
             <Route index element={<Hero />} />
@@ -56,6 +54,7 @@ const App = () => {
 
             {/* Cart Routes */}
             <Route path="cart" element={<Cart />} />
+            <Route path="orders" element={<ClientOrder role={"client"} />} />
           </Route>
         </Route>
 
