@@ -16,7 +16,7 @@ export default function MainLayout() {
     if (localIp?.check) {
       setIsConnect(true);
     } else {
-      setIsConnect(false);
+      setIsConnect(true);
     }
   }, [localIp, isConnect, navigate]);
   
