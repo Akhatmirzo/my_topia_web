@@ -28,13 +28,19 @@ const TopNav = () => {
           </div>
         </div>
         <div className="flex flex-row-reverse gap-5">
-          <Link to={`/table/${tableSL}/cart`} className="relative">
+          <Link
+            to={tableSL ? `/table/${tableSL}/cart` : "/"}
+            className="relative"
+          >
             <img src={images.Cart} alt="cart" className="relative" />
             <div className="absolute top-[-3px] right-0 w-[11px] h-[11px] bg-[#4E4E4E] text-[8px] rounded-[100%] text-[#fff] flex items-center justify-center">
               {cart.products.length || 0}
             </div>
           </Link>
-          <Link to={`/orders`} className="relative bg-green-600 p-[5px] rounded-full">
+          <Link
+            to={tableSL ? `/table/${tableSL}/orders` : "/"}
+            className="relative bg-green-600 p-[5px] rounded-full"
+          >
             <AiOutlineImport size={15} color="white" />
             <div className="absolute top-[-3px] right-0 w-[11px] h-[11px] bg-[#4E4E4E] text-[8px] rounded-[100%] text-[#fff] flex items-center justify-center">
               {clientOrder?.orders?.length || 0}
