@@ -62,7 +62,7 @@ export default function OrderCard({ role, order }) {
           </tbody>
         </table>
 
-        <ul className="space-y-5 my-7 h-full">
+        <ul className="space-y-5 my-7">
           {products.map(({ product_id, quantity }) => (
             <li key={uid()} className="flex items-center">
               <svg
