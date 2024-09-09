@@ -22,7 +22,6 @@ export const employersApi = createApi({
     getEmployers: builder.query({
       query: () => "/all",
       transformErrorResponse: (response) => {
-        console.log(response);
         return response;
       },
       providesTags: ["employersApi"],

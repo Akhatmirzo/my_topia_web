@@ -11,7 +11,7 @@ export default function AdminFoodCard({ food, deleted, updated }) {
       id="adminCard"
       className="max-w-sm w-full rounded overflow-hidden shadow-lg bg-white"
     >
-      <img src={staticData.SERVER_URL + "/" + images[0]?.path} alt="" />
+      <img loading="lazy" src={staticData.SERVER_URL + "/" + images[0]?.path} alt="" />
 
       <div className="p-4">
         <div className="mb-4">
@@ -44,7 +44,7 @@ export default function AdminFoodCard({ food, deleted, updated }) {
             Characteristics:
           </h3>
           <ul className="list-disc pl-5 mt-2 h-[130px] overflow-x-hidden overflow-y-auto text-gray-600">
-            {characteristics.map((item, index) => (
+            {characteristics?.map((item, index) => (
               <li key={index}>{item}</li>
             ))}
           </ul>
@@ -55,7 +55,7 @@ export default function AdminFoodCard({ food, deleted, updated }) {
             Addition:
           </h3>
           <ul className="list-disc pl-5 mt-2 text-gray-600">
-            {addition.map((item, index) => (
+            {addition?.map((item, index) => (
               <li key={index}>
                 {item.name}: {item.price}
               </li>

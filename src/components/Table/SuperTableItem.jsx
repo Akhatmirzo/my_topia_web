@@ -5,7 +5,6 @@ import { CiEdit } from "react-icons/ci";
 import { RiDeleteBin6Fill } from "react-icons/ri";
 
 export default function SuperTableItem({ keys, index, tableItem, update, deleteData }) {
-  console.log(keys?.length);
   return (
     <Table.Row className="bg-white dark:border-gray-700 dark:bg-gray-800">
       <Table.Cell className="p-4 mysm:p-2 w-[30px] text-center">{index + 1}</Table.Cell>

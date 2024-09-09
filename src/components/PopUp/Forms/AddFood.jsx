@@ -26,7 +26,6 @@ export default function AddFood({ AddFoodFn }) {
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
       event.preventDefault(); // Enter tugmasini bosishda formaning yuborilishini to'xtatadi
-      console.log("Enter tugmasi bosildi, lekin forma yuborilmadi");
     }
   };
 
@@ -43,10 +42,6 @@ export default function AddFood({ AddFoodFn }) {
   const AddFood = async (e) => {
     e.preventDefault();
     const foodForm = new FormData(e.target);
-
-    for (let pair of foodForm.entries()) {
-      console.log(pair[0] + ": " + pair[1]);
-    }
 
     await AddFoodFn(foodForm);
   };

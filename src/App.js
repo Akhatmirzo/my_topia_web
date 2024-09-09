@@ -25,10 +25,10 @@ import EmployerCart from "./pages/employer/EmployerCart";
 const App = () => {
   useEffect(() => {
     localStorage.setItem("flowbite-theme-mode", "dark");
+    isConnected();
+    disconnect();
   }, []);
 
-  isConnected();
-  disconnect();
 
   return (
     <>

@@ -11,6 +11,7 @@ import { PopUp } from "../../components/PopUp/PopUp";
 import EditEmployer from "../../components/PopUp/Forms/EditEmployer";
 import Loading from "../../components/Loadings/Loading";
 import AddEmployer from "../../components/PopUp/Forms/AddEmployer";
+import { toast } from "react-toastify";
 
 export default function Employers() {
   const [loading, setLoading] = useState(false);
@@ -24,7 +25,6 @@ export default function Employers() {
   const [DeleteEmployer, deleteResult] = useDeleteEmployerMutation();
 
   const tableData = useMemo(() => {
-    console.log(data);
     return createTable(data?.employers);
   }, [data]);
 
@@ -34,7 +34,7 @@ export default function Employers() {
 
     if (result.isError) {
       setLoading(false);
-      console.error(result.error);
+      toast.error(result.error);
       return;
     } else {
       setOpenModal(false);
@@ -48,7 +48,7 @@ export default function Employers() {
 
     if (deleteResult.isError) {
       setLoading(false);
-      console.error(deleteResult.error);
+      toast.error(deleteResult.error);
       return;
     }
     setLoading(false);

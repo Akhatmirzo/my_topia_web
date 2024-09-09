@@ -27,15 +27,11 @@ export default function RequireAuth({ AllowedRole }) {
   useEffect(() => {
     // update table
     receiveData("updateTable", (data) => {
-      console.log(data);
-
       dispatch(
         tablesApi.util.updateQueryData(
           "getTables",
           undefined,
           (draftOrders) => {
-            console.log(draftOrders);
-
             draftOrders.tables = draftOrders.tables.map((table) => {
               if (table._id === data._id) {
                 return data;

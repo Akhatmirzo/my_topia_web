@@ -24,7 +24,7 @@ export default function AddCategory({ AddCategoryFn }) {
 
       <div>
         <div className="w-full h-[200px]">
-          <img src={image} alt="" className="w-full h-full" />
+          <img src={image} alt="" className="w-full h-full" loading="lazy" />
         </div>
         <div className="mb-2 block">
           <Label htmlFor="file-upload" value="Upload file" />

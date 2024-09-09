@@ -14,13 +14,10 @@ export default function Dashboard() {
   const [updateStatistics] = useUpdateStatisticsMutation();
 
   const state = useMemo(() => {
-    console.log(data);
-
     if (data?.statistics.length > 0) {
       const labels = data?.statistics.map((data) => data._id + " AM");
       const Revenue = data?.statistics.map((data) => data.totalRevenue);
 
-      console.log(data);
       return {
         labels,
         datasets: [
