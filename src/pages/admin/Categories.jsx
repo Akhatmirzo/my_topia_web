@@ -11,6 +11,7 @@ import { PopUp } from "../../components/PopUp/PopUp";
 import EditCategory from "../../components/PopUp/Forms/EditCategory";
 import AddCategory from "../../components/PopUp/Forms/AddCategory";
 import Loading from "../../components/Loadings/Loading";
+import { toast } from "react-toastify";
 
 export default function Categories() {
   const [loading, setLoading] = useState(false);
@@ -37,7 +38,7 @@ export default function Categories() {
 
     if (result.isError) {
       setLoading(false);
-      console.error(result.error);
+      toast.error(result.error);
       return;
     } else {
       setOpenModal(false);
@@ -50,7 +51,7 @@ export default function Categories() {
     await DeleteCategory({ categoryId: id });
     setLoading(false);
     if (deleteResult.isError) {
-      console.error(deleteResult.error);
+      toast.error(deleteResult.error);
       return;
     }
   };

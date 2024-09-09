@@ -12,6 +12,7 @@ const FoodCard = ({ product }) => {
           alt={name}
           src={staticData.SERVER_URL + "/" + images[0].path}
           className="w-full h-full object-cover object-center"
+          loading="lazy"
         />
       </div>
       <div className="-mt-[40px]">

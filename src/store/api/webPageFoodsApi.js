@@ -12,7 +12,6 @@ export const WebPageFoodsApi = createApi({
       query: ({ category_id }) =>
         `/products/all?category=${category_id}`,
       transformResponse: (response) => {
-        console.log(response);
         return response.products;
       },
       providesTags: ["WebPageFoodsApi"],
@@ -22,7 +21,6 @@ export const WebPageFoodsApi = createApi({
       query: ({ foodId }) => `/product/${foodId}`,
       providesTags: ["WebPageFoodApi"],
       transformResponse: (response) => {
-        console.log(response);
         return response.product;
       },
     }),

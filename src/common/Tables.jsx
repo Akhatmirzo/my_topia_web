@@ -10,6 +10,7 @@ import Loading from "../components/Loadings/Loading";
 import AddTable from "../components/PopUp/Forms/AddTable";
 import { MdDeleteForever } from "react-icons/md";
 import EditClientTableOrder from "../components/PopUp/EditClientTableOrder";
+import { toast } from "react-toastify";
 
 function calculateOrder(order) {
   return order.reduce((acc, ord) => acc + ord.total_price, 0);
@@ -35,7 +36,7 @@ export default function Tables() {
     await addTable(data);
 
     if (result.isError) {
-      console.error(result.error);
+      toast.error(result.error);
     } else {
       setOpenModal(false);
       setLoading(false);

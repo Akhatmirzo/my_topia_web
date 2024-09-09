@@ -34,6 +34,7 @@ export default function CartCard({
           src={staticData.SERVER_URL + "/" + cart.image}
           alt="order-photo"
           className="w-full h-full object-cover"
+          loading="lazy"
         />
       </div>
       <div
@@ -52,7 +53,7 @@ export default function CartCard({
             className="cursor-pointer"
             onClick={() => deleteItem(cart.itemId)}
           >
-            <img src={images.Delete} alt="delete icon" />
+            <img src={images.Delete} alt="delete icon" loading="lazy" />
           </div>
         </div>
         <div className="w-full flex justify-between">

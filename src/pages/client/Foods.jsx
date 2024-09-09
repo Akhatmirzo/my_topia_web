@@ -23,8 +23,7 @@ export default function Foods() {
   }, [location]);
 
   if (error) {
-    console.log(error);
-    return <div>Error: {error.message || error.data.message}</div>;
+    return <div>Error: {error?.message || error?.data?.message}</div>;
   }
 
   if (isLoading) {

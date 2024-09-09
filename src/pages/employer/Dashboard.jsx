@@ -17,7 +17,7 @@ export default function Dashboard() {
       <Navbar fluid>
         <Navbar title={"navbar_side"} className="p-0 m-0 sm:p-0">
           <Link>
-            <img src={images.Maytopia_control} alt="logo" />
+            <img src={images.Maytopia_control} alt="logo" loading="lazy" />
           </Link>
         </Navbar>
 

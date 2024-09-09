@@ -13,12 +13,6 @@ export const getUpdateData = createAsyncThunk(
         ids,
       });
 
-      // if (response.statusCode !== 200) {
-      //   throw new Error("Error fetching orders");
-      // }
-
-      console.log(response, "orders", response.data);
-
       return response.data;
     } catch (error) {
       throw new Error("Error fetching orders: " + error.message);

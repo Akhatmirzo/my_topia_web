@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDeleteOrderMutation } from "../../store/api/orderApi";
 import { uid } from "uid";
 import { Button } from "flowbite-react";
@@ -14,8 +14,8 @@ export default function OrderCard({ role, order }) {
   const [deleteOrder] = useDeleteOrderMutation();
   const handleExportPdf = useExportPdf();
 
-  const handleClick = async () => {
-    await handleExportPdf(isPdfChek);
+  const handleClick = () => {
+    handleExportPdf(isPdfChek);
     setIsPdfChek(false);
   };
   return (

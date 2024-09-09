@@ -6,6 +6,7 @@ import {
   useUpdateEmployerMutation,
 } from "../../../store/api/employersApi";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 
 export default function EditEmployer({ edit, setEdit }) {
   const [edit_employer, editResult] = useUpdateEmployerMutation();
@@ -37,7 +38,7 @@ export default function EditEmployer({ edit, setEdit }) {
       });
 
       if (editResult.isError) {
-        console.error(editResult.error);
+        toast.error(editResult.error);
         return;
       } else {
         reset();

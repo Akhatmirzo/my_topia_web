@@ -4,7 +4,6 @@ import html2canvas from "html2canvas";
 
 export default function useExportPdf() {
   const handleExport = useCallback((orderRef) => {
-    console.log("hello");
     const input = orderRef.current;
     html2canvas(input).then((canvas) => {
       const imgData = canvas.toDataURL("image/png");

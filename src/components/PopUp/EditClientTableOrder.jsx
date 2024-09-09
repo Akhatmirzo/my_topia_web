@@ -9,7 +9,7 @@ export default function EditClientTableOrder({ table, setTable }) {
   const [ChangeTableOrder] = useChangeTableOrderMutation();
   const positionStyle = useMemo(() => {
     if (table) {
-      if (table.order.length > 0) {
+      if (table?.order?.length > 0) {
         return { right: 0 };
       } else {
         return { right: "-100%" };
@@ -69,6 +69,7 @@ export default function EditClientTableOrder({ table, setTable }) {
                     }
                     alt="order-photo"
                     className="w-full h-full object-cover"
+                    loading="lazy"
                   />
                 </div>
                 <div className="w-full flex items-start flex-col">

@@ -7,6 +7,7 @@ import {
 import Skeleton from "../../skeletons/Skeleton";
 import { convertToBase64 } from "../../../utils/convertToBase64";
 import staticData from "../../../store/staticData";
+import { toast } from "react-toastify";
 
 export default function EditCategory({ edit, setEdit }) {
   const [image, setImage] = useState();
@@ -29,7 +30,7 @@ export default function EditCategory({ edit, setEdit }) {
     await EditCategory({ categoryId: edit.id, category: categoryForm });
 
     if (result.isError) {
-      console.error(result.error);
+      toast.error(result.error);
       return;
     } else {
       setEdit({ id: null, isEdit: false });

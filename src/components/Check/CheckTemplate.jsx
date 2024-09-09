@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { getTimeOrder } from "../../utils/helpers";
 
 export default function CheckTemplate({ data, setIsPdfChek, isPdfChek }) {
-  const { _id, createdAt, total_price, products, table_number, status } =
+  const { createdAt, total_price, products, table_number, status } =
     data || {};
   const pdfRef = useRef();
 
