@@ -62,7 +62,7 @@ export default function OrderCard({ role, order }) {
           </tbody>
         </table>
 
-        <ul className="space-y-5 my-7">
+        <ul className="space-y-5 my-7 h-full">
           {products.map(({ product_id, quantity }) => (
             <li key={uid()} className="flex items-center">
               <svg
@@ -83,24 +83,26 @@ export default function OrderCard({ role, order }) {
             </li>
           ))}
         </ul>
-        {role === "admin" && (
-          <button
+        <div className="flex flex-col gap-3">
+          {role === "admin" && (
+            <button
+              type="button"
+              onClick={() => deleteOrder({ id: _id })}
+              className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-200 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center"
+            >
+              Delete
+            </button>
+          )}
+  
+          <Button
             type="button"
-            onClick={() => deleteOrder({ id: _id })}
-            className="text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-200 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center"
+            onClick={handleClick}
+            disabled={status !== "paid"}
+            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center"
           >
-            Delete
-          </button>
-        )}
-
-        <Button
-          type="button"
-          onClick={handleClick}
-          disabled={status !== "paid"}
-          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-200 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-900 font-medium rounded-lg text-sm px-5 py-2.5 inline-flex justify-center w-full text-center"
-        >
-          Chekni olish
-        </Button>
+            Chekni olish
+          </Button>
+        </div>
       </div>
 
       <div className=" absolute top-0 left-[-100%]">

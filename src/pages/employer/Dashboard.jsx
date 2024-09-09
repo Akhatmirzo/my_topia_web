@@ -6,8 +6,10 @@ import images from "../../assets/images";
 import { useGetAllCategoriesQuery } from "../../store/api/categoriesApi";
 import EmployerCard from "../../components/Card/EmployerCard";
 import Loading from "../../components/Loadings/Loading";
+import { useSelector } from "react-redux";
 
 export default function Dashboard() {
+  const cart = useSelector(state => state.cart)
   const [categoryId, setCategoryId] = useState("");
   const { data, isLoading } = useGetFoodsQuery({ category_id: categoryId });
   const { data: categoryData } = useGetAllCategoriesQuery();
@@ -42,7 +44,7 @@ export default function Dashboard() {
           <Link to={`cart`} className="relative w-[50px] h-[50px]">
             <img src={images.Cart} alt="cart" className="relative w-full h-full" />
             <div className="absolute top-[-3px] -right-[5px] w-[22px] h-[22px] bg-[#4E4E4E] text-[12px] rounded-[100%] text-[#fff] flex items-center justify-center">
-              {/* {cart.products.length || 0} */}0
+              {cart?.products?.length || 0}
             </div>
           </Link>
         </div>

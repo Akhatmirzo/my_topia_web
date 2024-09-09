@@ -5,7 +5,7 @@ import { Button, Label, Select } from "flowbite-react";
 import { useChangeTableOrderMutation } from "../../store/api/tablesApi";
 
 export default function EditClientTableOrder({ table, setTable }) {
-  const [orderStatus, setOrderStatus] = useState("pending");
+  const [orderStatus, setOrderStatus] = useState("");
   const [ChangeTableOrder] = useChangeTableOrderMutation();
   const positionStyle = useMemo(() => {
     if (table) {
@@ -26,9 +26,19 @@ export default function EditClientTableOrder({ table, setTable }) {
   const updateTableOrder = async (e) => {
     e.preventDefault();
 
-    await ChangeTableOrder({ tableId: table._id, status: orderStatus });
+    if (orderStatus) {
+      if (orderStatus === "cancelled") {
+        const confirmed = window.confirm(
+          "Are you sure you want to cancel this order?"
+        );
 
-    setTable(null);
+        if (!confirmed) return;
+      }
+
+      await ChangeTableOrder({ tableId: table._id, status: orderStatus });
+
+      setTable(null);
+    }
   };
 
   return (
@@ -122,8 +132,9 @@ export default function EditClientTableOrder({ table, setTable }) {
                 required
                 onChange={(e) => setOrderStatus(e.target.value)}
               >
-                <option value={"pending"}>Pending</option>
+                <option>Select status</option>
                 <option value={"paid"}>Paid</option>
+                <option value={"cancelled"}>cancel</option>
               </Select>
             </div>
 
